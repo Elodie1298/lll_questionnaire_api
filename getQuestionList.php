@@ -381,7 +381,7 @@ foreach ($questions as $id) {
         $json .= '"carac2": null';
     }
     $json .= "}";
-    array_push($final,$json);
+    array_push($final,json_encode($json));
 }
 
 $res = json_encode($final);
