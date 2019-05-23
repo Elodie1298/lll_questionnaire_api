@@ -117,7 +117,7 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
                 case "Gender":
                     if($operator == "="){
                         //Search Speakers that are the same gender
-                        $query = "SELECT speaker_id FROM speaker WHERE speaker_gender = ".$val.";";
+                        $query = 'SELECT speaker_id FROM speaker WHERE speaker_gender = "'.$val.'";';
                         $res = mysqli_query($Connect,$query);
                         while ($data = mysqli_fetch_row($res)) {
                             //Fetch Audios
@@ -130,7 +130,7 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
                         }
                     } else {
                         //Search Speakers that are not the same gender 
-                        $query = "SELECT speaker_id FROM speaker WHERE speaker_gender <> ".$val.";";
+                        $query = 'SELECT speaker_id FROM speaker WHERE speaker_gender <> "'.$val.'";';
                         $res = mysqli_query($Connect,$query);
                         while ($data = mysqli_fetch_row($res)) {
                             //Fetch Audios
@@ -146,7 +146,7 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
                 case "Lang":
                     if($operator == "="){
                         //Search Audios that are in the same lang 
-                        $query = "SELECT audio_path FROM audio WHERE language = ".$val.";";
+                        $query = 'SELECT audio_path FROM audio WHERE language = "'.$val.'";';
                         $res = mysqli_query($Connect,$query);
                         $data = mysqli_fetch_row($res);
                         while ($data = mysqli_fetch_row($res)) {
@@ -154,7 +154,7 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
                         }
                     } else {
                         //Search Audios that are not in the same lang 
-                        $query = "SELECT audio_path FROM audio WHERE language <> ".$val.";";
+                        $query = 'SELECT audio_path FROM audio WHERE language <> "'.$val.'";';
                         $res = mysqli_query($Connect,$query);
                         $data = mysqli_fetch_row($res);
                         while ($data = mysqli_fetch_row($res)) {
