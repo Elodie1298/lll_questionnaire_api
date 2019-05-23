@@ -1,4 +1,5 @@
 <?php
+include_once 'connect.php';
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
@@ -337,7 +338,7 @@ foreach ($questions as $id) {
         }
     }
 
-    $json = '"'.$id.'":{';
+    $json = '{';
     $json .= '"questionId":'.$questionId.',';
     $json .= '"question":"'.$question.'",';
     $json .= '"audio": {';
