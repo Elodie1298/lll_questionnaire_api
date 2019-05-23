@@ -101,13 +101,109 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
         if ($carac1 != null) {
             if (strpos($carac1, '=') !== false) {
                 $logic = explode('=',$carac1);
-                print_r($logic);
+                $operator = "=";
+                $carac = $logic[0];
+                $val = $logic[1];
+            } else {
+                $logic = explode('!',$carac1);
+                $operator = "!";
+                $carac = $logic[0];
+                $val = $logic[1];
             }
-            /*switch ($carac1){
-                case 
-            }*/
-        }
 
+            $carac1Audios = array();
+
+            switch ($carac){
+                case "Gender":
+                    if($operator == "="){
+                        //Search Speakers that are the same gender
+                        $query = "SELECT speaker_id FROM speaker WHERE speaker_gender = ".$val.";";
+                        $res = mysqli_query($Connect,$query);
+                        while ($data = mysqli_fetch_row($res)) {
+                            //Fetch Audios
+                            $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
+                            $res = mysqli_query($Connect,$query);
+                            $data = mysqli_fetch_row($res);
+                            while ($data = mysqli_fetch_row($res)) {
+                                array_push($carac1Audios,$data[0]);
+                            }
+                        }
+                    } else {
+                        //Search Speakers that are not the same gender 
+                        $query = "SELECT speaker_id FROM speaker WHERE speaker_gender <> ".$val.";";
+                        $res = mysqli_query($Connect,$query);
+                        while ($data = mysqli_fetch_row($res)) {
+                            //Fetch Audios
+                            $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
+                            $res = mysqli_query($Connect,$query);
+                            $data = mysqli_fetch_row($res);
+                            while ($data = mysqli_fetch_row($res)) {
+                                array_push($carac1Audios,$data[0]);
+                            }
+                        }
+                    }
+                    break;
+                case "Lang":
+                    if($operator == "="){
+                        //Search Audios that are in the same lang 
+                        $query = "SELECT audio_path FROM audio WHERE language = ".$val.";";
+                        $res = mysqli_query($Connect,$query);
+                        $data = mysqli_fetch_row($res);
+                        while ($data = mysqli_fetch_row($res)) {
+                            array_push($carac1Audios,$data[0]);
+                        }
+                    } else {
+                        //Search Audios that are not in the same lang 
+                        $query = "SELECT audio_path FROM audio WHERE language <> ".$val.";";
+                        $res = mysqli_query($Connect,$query);
+                        $data = mysqli_fetch_row($res);
+                        while ($data = mysqli_fetch_row($res)) {
+                            array_push($carac1Audios,$data[0]);
+                        }
+                    }
+                    break;
+                case "Age":
+                    if ($val == "Enfant") {
+                        $min = 0;
+                        $max = 20;
+                    } else if ($val == "Adulte"){
+                        $min = 20;
+                        $max = 60;
+                    } else {
+                        $min = 60;
+                        $max = 150;
+                    }
+                    if($operator == "="){
+                        //Search Speakers that have the same age
+                        $query = "SELECT speaker_id FROM speaker WHERE speaker_age > ".$min." AND speaker_age <= ".$max.";";
+                        $res = mysqli_query($Connect,$query);
+                        while ($data = mysqli_fetch_row($res)) {
+                            //Fetch Audios
+                            $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
+                            $res = mysqli_query($Connect,$query);
+                            $data = mysqli_fetch_row($res);
+                            while ($data = mysqli_fetch_row($res)) {
+                                array_push($carac1Audios,$data[0]);
+                            }
+                        } 
+                    } else {
+                        //Search Speakers that have not the same age
+                        $query = "SELECT speaker_id FROM speaker WHERE speaker_age <= ".$min." OR speaker_age > ".$max.";";
+                        $res = mysqli_query($Connect,$query);
+                        while ($data = mysqli_fetch_row($res)) {
+                            //Fetch Audios
+                            $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
+                            $res = mysqli_query($Connect,$query);
+                            $data = mysqli_fetch_row($res);
+                            while ($data = mysqli_fetch_row($res)) {
+                                array_push($carac1Audios,$data[0]);
+                            }
+                        } 
+                    }
+                    break;
+            }
+        }
+        print_r($carac1Audios);
     } else {
         http_response_code(404);
     }
