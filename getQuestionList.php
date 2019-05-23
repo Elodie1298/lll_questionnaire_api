@@ -383,7 +383,7 @@ foreach ($questions as $id) {
     array_push($final,$json);
 }
 
-$res = json_encode($questions);
+$res = json_encode($final);
 echo '{"res":'.$res.'}';
 
 ?>
