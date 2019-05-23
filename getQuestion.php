@@ -348,6 +348,24 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
         } else {
             $json .= '"speaker2": null';
         }
+        $json .= ",";
+        if ($carac1 != null){
+            $json .= '"carac1": {';
+            $json .= '"caracName": "'.$carac1.'",';
+            $json .= '"audiosPath": '.json_encode($carac1Audios);
+            $json .= '}';
+        } else {
+            $json .= '"carac1": null';
+        }
+        $json .= ",";
+        if ($carac2 != null){
+            $json .= '"carac2": {';
+            $json .= '"caracName": "'.$carac2.'",';
+            $json .= '"audiosPath": '.json_encode($carac2Audios);
+            $json .= '}';
+        } else {
+            $json .= '"carac2": null';
+        }
         $json .= "}";
         echo $json;
     } else {
