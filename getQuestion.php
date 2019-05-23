@@ -68,14 +68,37 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
             $spk1Audios = array();
 
             //Fetching Audios
-            $query = "SELECT audio_path FROM speaker WHERE speaker_id = ".$spk1Id.";";
+            $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$spk1Id.";";
             $res = mysqli_query($Connect,$query);
             $data = mysqli_fetch_row($res);
             while ($data = mysqli_fetch_row($res)) {
-                print_r($data);
+                array_push($spk1Audios,$data[0]);
             }
-
         }
+
+        if ($spk2Id != null) {
+            //Fetching Speaker
+            $query = "SELECT * FROM speaker WHERE speaker_id = ".$spk2Id.";";
+            $res = mysqli_query($Connect,$query);
+            $data = mysqli_fetch_row($res);
+            //Speaker informations
+            $speaker2Name = $data[1];
+            $speaker2Gender = $data[2];
+            $speaker2Age = $data[3];
+            $speaker2NativeLang = $data[4];
+
+            $spk2Audios = array();
+
+            //Fetching Audios
+            $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$spk2Id.";";
+            $res = mysqli_query($Connect,$query);
+            $data = mysqli_fetch_row($res);
+            while ($data = mysqli_fetch_row($res)) {
+                array_push($spk1Audios,$data[0]);
+            }
+        }
+
+        print_r($spk2Audios);
     } else {
         http_response_code(404);
     }
