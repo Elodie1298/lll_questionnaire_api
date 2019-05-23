@@ -3,6 +3,7 @@
 include_once 'connect.php';
 
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
 
 $age = htmlspecialchars($_GET["age"]);
 $gender = htmlspecialchars($_GET["gender"]);

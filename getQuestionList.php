@@ -17,6 +17,6 @@ $qcat5 = array_rand($cat5,2);
 
 $questions = array($cat1[$qcat1[0]],$cat1[$qcat1[1]],$cat2[$qcat2[0]],$cat2[$qcat2[1]],$cat3[$qcat3[0]],$cat3[$qcat3[1]],$cat4[$qcat4[0]],$cat4[$qcat4[1]],$cat5[$qcat5[0]],$cat5[$qcat5[1]]);
 
-echo json_encode($questions);
+echo "{".json_encode($questions)."}";
 
 ?>
