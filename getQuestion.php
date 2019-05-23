@@ -94,11 +94,20 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
             $res = mysqli_query($Connect,$query);
             $data = mysqli_fetch_row($res);
             while ($data = mysqli_fetch_row($res)) {
-                array_push($spk1Audios,$data[0]);
+                array_push($spk2Audios,$data[0]);
             }
         }
 
-        print_r($spk2Audios);
+        if ($carac1 != null) {
+            if (strpos($carac1, '=') !== false) {
+                $logic = explode('=',$carac1);
+                print_r($logic);
+            }
+            /*switch ($carac1){
+                case 
+            }*/
+        }
+
     } else {
         http_response_code(404);
     }
