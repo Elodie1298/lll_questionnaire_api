@@ -117,7 +117,7 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
                 case "Gender":
                     if($operator == "="){
                         //Search Speakers that are the same gender
-                        $query = 'SELECT speaker_id FROM speaker WHERE speaker_gender = "'.$val.'";';
+                        $query = 'SELECT speaker_id FROM speaker WHERE speaker_gender = "'.$val.'" AND speaker_id <> '.$speakerId.';';
                         $res = mysqli_query($Connect,$query);
                         while ($data = mysqli_fetch_row($res)) {
                             //Fetch Audios
@@ -129,7 +129,7 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
                         }
                     } else {
                         //Search Speakers that are not the same gender 
-                        $query = 'SELECT speaker_id FROM speaker WHERE speaker_gender <> "'.$val.'";';
+                        $query = 'SELECT speaker_id FROM speaker WHERE speaker_gender <> "'.$val.'" AND speaker_id <> '.$speakerId.';';
                         $res = mysqli_query($Connect,$query);
                         while ($data = mysqli_fetch_row($res)) {
                             //Fetch Audios
@@ -173,7 +173,7 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
                     }
                     if($operator == "="){
                         //Search Speakers that have the same age
-                        $query = "SELECT speaker_id FROM speaker WHERE speaker_age > ".$min." AND speaker_age <= ".$max.";";
+                        $query = "SELECT speaker_id FROM speaker WHERE speaker_age > ".$min." AND speaker_age <= ".$max." AND speaker_id <> ".$speakerId.";";
                         $res = mysqli_query($Connect,$query);
                         while ($data = mysqli_fetch_row($res)) {
                             //Fetch Audios
@@ -185,7 +185,7 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
                         } 
                     } else {
                         //Search Speakers that have not the same age
-                        $query = "SELECT speaker_id FROM speaker WHERE speaker_age <= ".$min." OR speaker_age > ".$max.";";
+                        $query = "SELECT speaker_id FROM speaker WHERE speaker_age <= ".$min." OR speaker_age > ".$max." AND speaker_id <> ".$speakerId.";";
                         $res = mysqli_query($Connect,$query);
                         while ($data = mysqli_fetch_row($res)) {
                             //Fetch Audios
