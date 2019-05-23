@@ -12,7 +12,7 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
         $res = mysqli_query($Connect,$query);
         $data = mysqli_fetch_row ($res);
 
-        echo $data["audio_id"];
+        echo $data[2];
     } else {
         http_response_code(404);
     }
