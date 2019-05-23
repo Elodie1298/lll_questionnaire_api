@@ -332,7 +332,11 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
         $json .= '"audioPath": "'.$audioPath.'",';
         $json .= '"audioLang": "'.$audioLang.'",';
         $json .= '"speakerId": '.$speakerId;
-        $json .= "}";
+        if ($spk1Id == null && $spk2Id == null && $carac1 == null && $carac2 == null){
+            $json .= "}";
+        } else {
+            $json .= "},";
+        }
         if ($spk1Id != null){
             $json .= '"speaker1": '.$jsonSpk1;
         } else {
