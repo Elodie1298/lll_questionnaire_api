@@ -122,10 +122,9 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
                         while ($data = mysqli_fetch_row($res)) {
                             //Fetch Audios
                             $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
-                            $res = mysqli_query($Connect,$query);
-                            $data = mysqli_fetch_row($res);
-                            while ($data = mysqli_fetch_row($res)) {
-                                array_push($carac1Audios,$data[0]);
+                            $res2 = mysqli_query($Connect,$query);
+                            while ($data2 = mysqli_fetch_row($res2)) {
+                                array_push($carac1Audios,$data2[0]);
                             }
                         }
                     } else {
@@ -135,10 +134,9 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
                         while ($data = mysqli_fetch_row($res)) {
                             //Fetch Audios
                             $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
-                            $res = mysqli_query($Connect,$query);
-                            $data = mysqli_fetch_row($res);
-                            while ($data = mysqli_fetch_row($res)) {
-                                array_push($carac1Audios,$data[0]);
+                            $res2 = mysqli_query($Connect,$query);
+                            while ($data2 = mysqli_fetch_row($res2)) {
+                                array_push($carac1Audios,$data2[0]);
                             }
                         }
                     }
@@ -180,10 +178,9 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
                         while ($data = mysqli_fetch_row($res)) {
                             //Fetch Audios
                             $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
-                            $res = mysqli_query($Connect,$query);
-                            $data = mysqli_fetch_row($res);
-                            while ($data = mysqli_fetch_row($res)) {
-                                array_push($carac1Audios,$data[0]);
+                            $res2 = mysqli_query($Connect,$query);
+                            while ($data2 = mysqli_fetch_row($res2)) {
+                                array_push($carac1Audios,$data2[0]);
                             }
                         } 
                     } else {
@@ -193,10 +190,9 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
                         while ($data = mysqli_fetch_row($res)) {
                             //Fetch Audios
                             $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
-                            $res = mysqli_query($Connect,$query);
-                            $data = mysqli_fetch_row($res);
-                            while ($data = mysqli_fetch_row($res)) {
-                                array_push($carac1Audios,$data[0]);
+                            $res2 = mysqli_query($Connect,$query);
+                            while ($data2 = mysqli_fetch_row($res2)) {
+                                array_push($carac1Audios,$data2[0]);
                             }
                         } 
                     }
