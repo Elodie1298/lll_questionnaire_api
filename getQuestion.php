@@ -74,6 +74,17 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
             while ($data = mysqli_fetch_row($res)) {
                 array_push($spk1Audios,$data[0]);
             }
+
+            shuffle($spk1Audios);
+
+            $jsonSpk1 = "{";
+            $jsonSpk1 .= '"speakerId":'.$spk1Id.',';
+            $jsonSpk1 .= '"speakerAge":'.$speaker1Age.',';
+            $jsonSpk1 .= '"speakerName":"'.$speaker1Name.'",';
+            $jsonSpk1 .= '"speakerGender":"'.$speaker1Gender.'",';
+            $jsonSpk1 .= '"speakerNativeLang":"'.$speaker1NativeLang.'",';
+            $jsonSpk1 .= '"audiosPath":'.json_encode($spk1Audios);
+            $jsonSpk1 .= "}";
         }
 
         if ($spk2Id != null) {
@@ -96,6 +107,17 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
             while ($data = mysqli_fetch_row($res)) {
                 array_push($spk2Audios,$data[0]);
             }
+
+            shuffle($spk2Audios);
+
+            $jsonSpk2 = "{";
+            $jsonSpk2 .= '"speakerId":'.$spk2Id.',';
+            $jsonSpk2 .= '"speakerAge":'.$speaker2Age.',';
+            $jsonSpk2 .= '"speakerName":"'.$speaker2Name.'",';
+            $jsonSpk2 .= '"speakerGender":"'.$speaker2Gender.'",';
+            $jsonSpk2 .= '"speakerNativeLang":"'.$speaker2NativeLang.'",';
+            $jsonSpk2 .= '"audiosPath":'.json_encode($spk2Audios);
+            $jsonSpk2 .= "}";
         }
 
         if ($carac1 != null) {
@@ -309,8 +331,19 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
         $json .= '"audioId": '.$audioID.',';
         $json .= '"audioPath": "'.$audioPath.'",';
         $json .= '"audioLang": "'.$audioLang.'",';
-        $json .= '"speakerId": "'.$speakerId;
+        $json .= '"speakerId": '.$speakerId;
         $json .= "}";
+        if ($spk1Id != null){
+            $json .= '"speaker1": '.$jsonSpk1;
+        } else {
+            $json .= '"speaker1": null';
+        }
+        $json .= ",";
+        if ($spk2Id != null){
+            $json .= '"speaker2": '.$jsonSpk2;
+        } else {
+            $json .= '"speaker2": null';
+        }
         $json .= "}";
         echo $json;
     } else {
