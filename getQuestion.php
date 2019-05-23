@@ -44,18 +44,37 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
         $speakerId = $data[2];
         $speakerLang = $data[3];
 
-        //Fetching Audio
+        //Fetching Speaker
         $query = "SELECT * FROM speaker WHERE speaker_id = ".$speakerId.";";
         $res = mysqli_query($Connect,$query);
         $data = mysqli_fetch_row($res);
-        //Audio informations
+        //Speaker informations
         $speakerName = $data[1];
         $speakerGender = $data[2];
         $speakerAge = $data[3];
         $speakerNativeLang = $data[4];
 
-        if ($spk1Id == null) {
-            echo "Bobo le lapin";
+        if ($spk1Id != null) {
+            //Fetching Speaker
+            $query = "SELECT * FROM speaker WHERE speaker_id = ".$spk1Id.";";
+            $res = mysqli_query($Connect,$query);
+            $data = mysqli_fetch_row($res);
+            //Speaker informations
+            $speaker1Name = $data[1];
+            $speaker1Gender = $data[2];
+            $speaker1Age = $data[3];
+            $speaker1NativeLang = $data[4];
+
+            $spk1Audios = array();
+
+            //Fetching Audios
+            $query = "SELECT audio_path FROM speaker WHERE speaker_id = ".$spk1Id.";";
+            $res = mysqli_query($Connect,$query);
+            $data = mysqli_fetch_row($res);
+            while ($data = mysqli_fetch_row($res)) {
+                echo $data[0];
+            }
+
         }
     } else {
         http_response_code(404);
