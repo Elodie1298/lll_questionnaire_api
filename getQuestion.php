@@ -72,7 +72,7 @@ if (isset($_GET['id']) || !empty($_GET['id'])){
             $res = mysqli_query($Connect,$query);
             $data = mysqli_fetch_row($res);
             while ($data = mysqli_fetch_row($res)) {
-                echo $data[0];
+                print_r($data);
             }
 
         }
