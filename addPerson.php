@@ -14,11 +14,6 @@ if (isset($_GET["age"]) && !empty($_GET["age"]) && isset($_GET["gender"]) && !em
     $query = "INSERT INTO user (user_id,user_gender, user_age, user_activity) VALUES ('".$uuid."','".$gender."', '".$age."', '".$activity."')";
     $Connect->query($query);
 
-    //$query = "SELECT user_id FROM user ORDER BY user_id DESC LIMIT 1;";
-    //$_SESSION['user_id'] = $Connect->query($query);
-
-    //http_response_code(200);
-
     echo '{"userId":"'.$uuid.'"}';
 } else {
     http_response_code(400);
