@@ -37,19 +37,6 @@ foreach ($questions as $id) {
     $carac2 = $data[6];
 
     //Fetching Audio
-    $query = "SELECT * FROM questions WHERE question_id = ".$id.";";
-    $res = mysqli_query($Connect,$query);
-    $data = mysqli_fetch_row($res);
-    //Question informations
-    $questionId = $data[0];
-    $question = $data[1];
-    $audioID = $data[2];
-    $spk1Id = $data[3];
-    $spk2Id = $data[4];
-    $carac1 = $data[5];
-    $carac2 = $data[6];
-
-    //Fetching Audio
     $query = "SELECT * FROM audio WHERE audio_id = ".$audioID.";";
     $res = mysqli_query($Connect,$query);
     $data = mysqli_fetch_row($res);
@@ -346,11 +333,7 @@ foreach ($questions as $id) {
     $json .= '"audioPath": "'.$audioPath.'",';
     $json .= '"audioLang": "'.$audioLang.'",';
     $json .= '"speakerId": '.$speakerId;
-    if ($spk1Id == null && $spk2Id == null && $carac1 == null && $carac2 == null){
-        $json .= "}";
-    } else {
-        $json .= "},";
-    }
+    $json .= "},";
     if ($spk1Id != null){
         $json .= '"speaker1": '.$jsonSpk1;
     } else {
@@ -381,10 +364,9 @@ foreach ($questions as $id) {
         $json .= '"carac2": null';
     }
     $json .= "}";
-    array_push($final,json_encode($json));
+	
+    array_push($final,json_decode(preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $json),true));
 }
-
 $res = json_encode($final);
 echo '{"res":'.$res.'}';
-
 ?>
