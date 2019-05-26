@@ -73,7 +73,7 @@ foreach ($questions as $id) {
         $res = mysqli_query($Connect,$query);
         $data = mysqli_fetch_row($res);
         while ($data = mysqli_fetch_row($res)) {
-            array_push($spk1Audios,$data[0]);
+            if ($data[0] != $audioPath) array_push($spk1Audios,$data[0]);
         }
 
         shuffle($spk1Audios);
@@ -106,7 +106,7 @@ foreach ($questions as $id) {
         $res = mysqli_query($Connect,$query);
         $data = mysqli_fetch_row($res);
         while ($data = mysqli_fetch_row($res)) {
-            array_push($spk2Audios,$data[0]);
+            if ($data[0] != $audioPath) array_push($spk2Audios,$data[0]);
         }
 
         shuffle($spk2Audios);
@@ -147,7 +147,7 @@ foreach ($questions as $id) {
                         $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
                         $res2 = mysqli_query($Connect,$query);
                         while ($data2 = mysqli_fetch_row($res2)) {
-                            array_push($carac1Audios,$data2[0]);
+                            if ($data[0] != $audioPath) array_push($carac1Audios,$data2[0]);
                         }
                     }
                 } else {
@@ -159,7 +159,7 @@ foreach ($questions as $id) {
                         $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
                         $res2 = mysqli_query($Connect,$query);
                         while ($data2 = mysqli_fetch_row($res2)) {
-                            array_push($carac1Audios,$data2[0]);
+                            if ($data[0] != $audioPath) array_push($carac1Audios,$data2[0]);
                         }
                     }
                 }
@@ -171,7 +171,7 @@ foreach ($questions as $id) {
                     $res = mysqli_query($Connect,$query);
                     $data = mysqli_fetch_row($res);
                     while ($data = mysqli_fetch_row($res)) {
-                        array_push($carac1Audios,$data[0]);
+                        if ($data[0] != $audioPath) array_push($carac1Audios,$data[0]);
                     }
                 } else {
                     //Search Audios that are not in the same lang 
@@ -179,7 +179,7 @@ foreach ($questions as $id) {
                     $res = mysqli_query($Connect,$query);
                     $data = mysqli_fetch_row($res);
                     while ($data = mysqli_fetch_row($res)) {
-                        array_push($carac1Audios,$data[0]);
+                        if ($data[0] != $audioPath) array_push($carac1Audios,$data[0]);
                     }
                 }
                 break;
@@ -203,7 +203,7 @@ foreach ($questions as $id) {
                         $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
                         $res2 = mysqli_query($Connect,$query);
                         while ($data2 = mysqli_fetch_row($res2)) {
-                            array_push($carac1Audios,$data2[0]);
+                            if ($data[0] != $audioPath) array_push($carac1Audios,$data2[0]);
                         }
                     } 
                 } else {
@@ -215,7 +215,7 @@ foreach ($questions as $id) {
                         $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
                         $res2 = mysqli_query($Connect,$query);
                         while ($data2 = mysqli_fetch_row($res2)) {
-                            array_push($carac1Audios,$data2[0]);
+                            if ($data[0] != $audioPath) array_push($carac1Audios,$data2[0]);
                         }
                     } 
                 }
@@ -249,7 +249,7 @@ foreach ($questions as $id) {
                         $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
                         $res2 = mysqli_query($Connect,$query);
                         while ($data2 = mysqli_fetch_row($res2)) {
-                            array_push($carac2Audios,$data2[0]);
+                            if ($data[0] != $audioPath) array_push($carac2Audios,$data2[0]);
                         }
                     }
                 } else {
@@ -261,7 +261,7 @@ foreach ($questions as $id) {
                         $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
                         $res2 = mysqli_query($Connect,$query);
                         while ($data2 = mysqli_fetch_row($res2)) {
-                            array_push($carac2Audios,$data2[0]);
+                            if ($data[0] != $audioPath) array_push($carac2Audios,$data2[0]);
                         }
                     }
                 }
@@ -273,7 +273,7 @@ foreach ($questions as $id) {
                     $res = mysqli_query($Connect,$query);
                     $data = mysqli_fetch_row($res);
                     while ($data = mysqli_fetch_row($res)) {
-                        array_push($carac2Audios,$data[0]);
+                        if ($data[0] != $audioPath) array_push($carac2Audios,$data[0]);
                     }
                 } else {
                     //Search Audios that are not in the same lang 
@@ -281,7 +281,7 @@ foreach ($questions as $id) {
                     $res = mysqli_query($Connect,$query);
                     $data = mysqli_fetch_row($res);
                     while ($data = mysqli_fetch_row($res)) {
-                        array_push($carac2Audios,$data[0]);
+                        if ($data[0] != $audioPath) array_push($carac2Audios,$data[0]);
                     }
                 }
                 break;
@@ -305,7 +305,7 @@ foreach ($questions as $id) {
                         $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
                         $res2 = mysqli_query($Connect,$query);
                         while ($data2 = mysqli_fetch_row($res2)) {
-                            array_push($carac2Audios,$data2[0]);
+                            if ($data[0] != $audioPath) array_push($carac2Audios,$data2[0]);
                         }
                     } 
                 } else {
@@ -317,7 +317,7 @@ foreach ($questions as $id) {
                         $query = "SELECT audio_path FROM audio WHERE speaker_id = ".$data[0].";";
                         $res2 = mysqli_query($Connect,$query);
                         while ($data2 = mysqli_fetch_row($res2)) {
-                            array_push($carac2Audios,$data2[0]);
+                            if ($data[0] != $audioPath) array_push($carac2Audios,$data2[0]);
                         }
                     } 
                 }
