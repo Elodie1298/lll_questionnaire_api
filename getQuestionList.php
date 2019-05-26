@@ -187,9 +187,9 @@ foreach ($questions as $id) {
             case "Age":
                 if ($val == "Enfant") {
                     $min = 0;
-                    $max = 20;
+                    $max = 18;
                 } else if ($val == "Adulte"){
-                    $min = 20;
+                    $min = 18;
                     $max = 60;
                 } else {
                     $min = 60;
@@ -289,9 +289,9 @@ foreach ($questions as $id) {
             case "Age":
                 if ($val == "Enfant") {
                     $min = 0;
-                    $max = 20;
+                    $max = 18;
                 } else if ($val == "Adulte"){
-                    $min = 20;
+                    $min = 18;
                     $max = 60;
                 } else {
                     $min = 60;
