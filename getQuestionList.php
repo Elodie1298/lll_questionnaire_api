@@ -133,6 +133,7 @@ foreach ($questions as $id) {
             $carac = $logic[0];
             $val = $logic[1];
         }
+        $carac1 = $val;
 
         $carac1Audios = array();
 
@@ -235,7 +236,7 @@ foreach ($questions as $id) {
             $carac = $logic[0];
             $val = $logic[1];
         }
-
+        $carac2 = $val;
         $carac2Audios = array();
 
         switch ($carac){
