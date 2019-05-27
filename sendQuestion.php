@@ -16,9 +16,10 @@ if (isset($_POST["user_id"]) && !empty($_POST["user_id"]) && isset($_POST["quest
     $ansinttemp = htmlentities($_POST["answer_interface_template"]);
     $anstemp = htmlentities($_POST["answer_template"]);
 
-    error_log("Writing in DB");
-
     $sql = 'INSERT INTO `answers` (`user_id`, `question_id`, `answer_text`, `answer_time`, `answer_extra_log`, `answer_interface`, `answer_interface_template`, `answer_template`) VALUES ("'.$uuid.'", '.$qid.', "'.$anstxt.'", '.$anstime.', "'.$anslog.'", "'.$ansint.'", "'.$ansinttemp.'", "'.$anstemp.'")';
+    
+
+    error_log("Writing in DB".$sql);
     mysqli_query($Connect,$sql);
     http_response_code(200);
 } else {
