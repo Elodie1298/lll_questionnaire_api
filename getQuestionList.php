@@ -129,7 +129,7 @@ foreach ($questions as $id) {
             $val = $logic[1];
             $carac1 = $val;
     
-            if ($carac1 == "FR") $carac1 = html_entity_decode("Fran&ccedil;ais");
+            if ($carac1 == "FR") $carac1 = html_entity_decode("Francais");
             if ($carac1 == "EN") $carac1 = html_entity_decode("Anglais");
         } else {
             $logic = explode('!',$carac1);
@@ -138,7 +138,7 @@ foreach ($questions as $id) {
             $val = $logic[1];
             $carac1 = $val;
     
-            if ($carac1 == "EN") $carac1 = html_entity_decode("Fran&ccedil;ais");
+            if ($carac1 == "EN") $carac1 = html_entity_decode("Francais");
             if ($carac1 == "FR") $carac1 = html_entity_decode("Anglais");
         }
 
@@ -238,7 +238,7 @@ foreach ($questions as $id) {
             $carac = $logic[0];
             $val = $logic[1];
             $carac2 = $val;
-            if ($carac2 == "FR") $carac2 = html_entity_decode("Fran&ccedil;ais");
+            if ($carac2 == "FR") $carac2 = html_entity_decode("Francais");
             if ($carac2 == "EN") $carac2 = html_entity_decode("Anglais");
         } else {
             $logic = explode('!',$carac2);
@@ -246,7 +246,7 @@ foreach ($questions as $id) {
             $carac = $logic[0];
             $val = $logic[1];
             $carac2 = $val;
-            if ($carac2 == "EN") $carac2 = html_entity_decode("Fran&ccedil;ais");
+            if ($carac2 == "EN") $carac2 = html_entity_decode("Francais");
             if ($carac2 == "FR") $carac2 = html_entity_decode("Anglais");
         }
         $carac2Audios = array();
