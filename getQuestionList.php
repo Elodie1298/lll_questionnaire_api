@@ -127,16 +127,20 @@ foreach ($questions as $id) {
             $operator = "=";
             $carac = $logic[0];
             $val = $logic[1];
+            $carac1 = $val;
+    
+            if ($carac1 == "FR") $carac1 = "Fran&ccedil;ais";
+            if ($carac1 == "EN") $carac1 = "Anglais";
         } else {
             $logic = explode('!',$carac1);
             $operator = "!";
             $carac = $logic[0];
             $val = $logic[1];
+            $carac1 = $val;
+    
+            if ($carac1 == "EN") $carac1 = "Fran&ccedil;ais";
+            if ($carac1 == "FR") $carac1 = "Anglais";
         }
-        $carac1 = $val;
-
-        if ($carac1 == "FR") $carac1 = "Fran&ccedil;ais";
-        if ($carac1 == "EN") $carac1 = "Anglais";
 
         $carac1Audios = array();
 
@@ -233,15 +237,18 @@ foreach ($questions as $id) {
             $operator = "=";
             $carac = $logic[0];
             $val = $logic[1];
+            $carac2 = $val;
+            if ($carac2 == "FR") $carac2 = "Fran&ccedil;ais";
+            if ($carac2 == "EN") $carac2 = "Anglais";
         } else {
             $logic = explode('!',$carac2);
             $operator = "!";
             $carac = $logic[0];
             $val = $logic[1];
+            $carac2 = $val;
+            if ($carac2 == "EN") $carac2 = "Fran&ccedil;ais";
+            if ($carac2 == "FR") $carac2 = "Anglais";
         }
-        $carac2 = $val;
-        if ($carac2 == "FR") $carac2 = "Fran&ccedil;ais";
-        if ($carac2 == "EN") $carac2 = "Anglais";
         $carac2Audios = array();
 
         switch ($carac){
